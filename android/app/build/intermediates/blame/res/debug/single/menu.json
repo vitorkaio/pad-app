@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\github\\pad-app\\android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\search_item.xml",
+        "source": "D:\\github\\pad-app\\android\\app\\build\\intermediates\\exploded-aar\\dontpadplusplus\\react-native-navigation\\unspecified\\res\\menu\\search_item.xml"
+    },
+    {
+        "merged": "D:\\github\\pad-app\\android\\app\\build\\intermediates\\res\\merged\\debug\\menu\\stub.xml",
+        "source": "D:\\github\\pad-app\\android\\app\\build\\intermediates\\exploded-aar\\dontpadplusplus\\react-native-navigation\\unspecified\\res\\menu\\stub.xml"
+    }
+]
