@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Toolbar from './../Toolbar/Toolbar';
+import TextArea from './../../components/TextArea/TextArea';
 
 class TextoScreen extends React.Component {
 
@@ -13,7 +14,7 @@ class TextoScreen extends React.Component {
       <View style={styles.container}>
         <Toolbar />
         <View style={styles.secao}>
-          <Text>Texto Screen</Text>
+          <TextArea />
         </View>
       </View>
     );
@@ -30,8 +31,6 @@ const styles = StyleSheet.create({
   secao: {
     flex: 1,
     width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
   }
 });
 
