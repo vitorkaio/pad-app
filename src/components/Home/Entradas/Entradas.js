@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   titleTexto: {
     marginTop: 100,
     fontSize: 55,
-    fontWeight: 'bold',
+    fontFamily: 'Offside-Regular'
   },
   entradasAcoes: {
     marginTop: 50,
