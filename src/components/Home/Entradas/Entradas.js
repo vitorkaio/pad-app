@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
     padding: 15,
     borderWidth: 2,
     borderRadius: 10,
-    borderColor: 'coral',
+    borderColor: 'turquoise',
   },
   botaoTexto: {
     textAlign: 'center',
-    color: 'coral',
+    color: 'turquoise',
     fontWeight: 'bold'
   },
 });

@@ -33,7 +33,7 @@ const startTabs = () => {
         }
       ],
       appStyle: {
-        tabBarSelectedButtonColor: 'coral'
+        tabBarSelectedButtonColor: 'turquoise'
       },
     });
 
