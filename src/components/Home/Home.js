@@ -2,14 +2,19 @@ import React from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView } from 'react-native';
 import EntradasHome from './Entradas/Entradas';
 import LinksHome from './Links/Links';
+import startMainTabs from './../../screens/MainTabs/startMainTabs';
 
 class Home extends React.Component {
+
+  iniciaTabs = () => {
+    startMainTabs();
+  }
 
   render() {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.entradas}>
-          <EntradasHome />
+          <EntradasHome acessa={this.iniciaTabs} />
         </View>
         <View style={styles.footer}>
           <LinksHome />

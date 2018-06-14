@@ -300,6 +300,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="D:\github\pad-app\android\app\build\intermediates\exploded-aar\dontpadplusplus\react-native-vector-icons\unspecified\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.1"
+        sha1="279750fed3c920d06351dbf32889c1b48203c7ad">
+        <dex dex="D:\github\pad-app\android\app\build\intermediates\pre-dexed\debug\dontpadplusplus-react-native-vector-icons-unspecified_07f41670841581d9a793af264c4d146bdc943d50.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\shammus\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
         jumboMode="false"
         optimize="true"
