@@ -1,5 +1,5 @@
 import { Navigation } from 'react-native-navigation';
-import HomeScreen from './src/screens/Home/Home';
+import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 
 Navigation.registerComponent('dontpad.HomeScreen', () => HomeScreen);
 
