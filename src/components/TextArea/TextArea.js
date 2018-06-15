@@ -9,6 +9,7 @@ const TextArea = (props) => {
       editable={true}
       multiline={true}
       placeholder='Vazio...'
+      value={props.texto}
      />
     </View>
   );
