@@ -12,20 +12,69 @@ class FirebaseApi {
     return url.split('/').join(sep);
   }
 
-  // Retorna o texto da rota.
-  static getPadTexto(url) {
+  // Retorna um pad da rota.
+  static getPad(url) {
     const rota = this.buildUrl(url);
     console.log(rota);
     return new Observable(obs => {
       fireUser.orderByKey().equalTo(rota).on('value', snap => {
         const res = snap.val();
-        // console.log(res[Object.keys(res)[0]].texto);
-        obs.next(res[Object.keys(res)[0]].texto);
+        let dados = {
+          url: url,
+          texto: '',
+          arqs: null,
+          links: null,
+          senha: ''
+        };
+        // console.log(res[Object.keys(res)[0]]);
+        dados.texto = res[Object.keys(res)[0]].texto;
+        dados.arqs = res[Object.keys(res)[0]].arqs;
+        dados.senha = res[Object.keys(res)[0]].senha;
+        obs.next(dados);
       }, (errorObject) => {
         obs.error(null);
       });
     });
 
+  }
+
+  // Retorna todos os links de uma url, filhos direto da url.
+  static getRotaLinks(url) {
+    // console.log('**** getRotaLinks ****', '\n\n');
+    let linkPai = this.buildUrl(url);
+    let links = [];
+
+    return new Promise((resolve, reject) => {
+      fireUser.orderByKey().startAt(linkPai).on('value', snap => {
+        if (snap.val() !== null) {
+          Object.keys(snap.val()).forEach(el => {
+            if (el.startsWith(linkPai)) {
+              let listaLinks = el.split(linkPai);
+              // console.log(linkPai, listaLinks, listaLinks.length);
+              if (listaLinks.length > 2)
+                ;
+              else {
+                if (listaLinks[1].split(sep).length > 2 || listaLinks[1].length === 0)
+                  ;
+                else
+                  links.push(url + listaLinks[1]);
+              }
+            }
+          });
+          if (links.length > 0)
+            resolve(links);
+          else
+            resolve(false);
+          // console.log(links);
+        }
+
+      }, (errorObject) => {
+        reject(null);
+      });
+
+    });
+
+    // console.log('\n', '**** END getRotaLinks ****', '\n');
   }
 
 }// Fim da classe

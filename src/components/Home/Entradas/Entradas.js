@@ -8,6 +8,8 @@ const EntradasHome = (props) => {
       <View style={styles.entradasAcoes}>
         <TextInput underlineColorAndroid="transparent"
         placeholder='Digite uma url...' 
+        onChangeText={(text) => props.inputUrl(text)}
+        value={props.val}
         style={styles.entradaUrl} />
           <TouchableOpacity style={styles.botoes} onPress={props.acessa} >
             <View style={styles.botaoUrl}>

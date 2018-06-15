@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './../../components/Home/Home';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
 
   static navigatorStyle = {
     navBarHidden: true, // make the nav bar hidden
@@ -13,3 +13,5 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+export default HomeScreen;

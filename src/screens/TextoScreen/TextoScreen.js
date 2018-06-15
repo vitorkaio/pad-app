@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import Toolbar from './../Toolbar/Toolbar';
 import TextArea from './../../components/TextArea/TextArea';
 import FirebaseApi from './../../services/Firebase/FirebaseApi';
+import { connect } from 'react-redux';
+import { addPad } from './../../../store/actions/DontpadActions';
 
 class TextoScreen extends React.Component {
 
@@ -15,16 +17,21 @@ class TextoScreen extends React.Component {
 
     this.state = {texto: ''};
     this.subsObs = null;
+
   }
 
   componentDidMount() {
-    this.subsObs = FirebaseApi.getPadTexto('avicii/musicas/').subscribe(this.listenerObsFirebaseText());
+    this.subsObs = FirebaseApi.getPad(this.props.dontpad.url).subscribe(this.listenerObsFirebaseText());
   }
 
   listenerObsFirebaseText = () => {
     const obs = {
       next: (val) => {
-        this.setState({texto: val});
+        FirebaseApi.getRotaLinks(this.props.dontpad.url).then(res => {
+          val.links = res;
+          console.log(val);
+          this.props.onAddPad(val);
+        });
       },
       error: (err) => {
         console.log(err);
@@ -41,7 +48,7 @@ class TextoScreen extends React.Component {
       <View style={styles.container}>
         <Toolbar />
         <View style={styles.secao}>
-          <TextArea texto={this.state.texto} />
+          <TextArea texto={this.props.dontpad.texto} />
         </View>
       </View>
     );
@@ -61,4 +68,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TextoScreen;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddPad: (pad) => dispatch(addPad(pad)),
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    dontpad: state.dontpadReducer.dontpad,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps) (TextoScreen);

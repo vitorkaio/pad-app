@@ -4,10 +4,14 @@ import TextoScreen from './src/screens/TextoScreen/TextoScreen';
 import FileScreen from './src/screens/FilesScreen/FileScreen';
 import FolderScreen from './src/screens/FoldersScreen/FolderScreen';
 import startSingleScreenApp from './src/screens/SingleScreen/startSingleScreen';
+import { Provider } from 'react-redux';
+import configureStore from './store/config/ConfigStore';
 
-Navigation.registerComponent('dontpad.HomeScreen', () => HomeScreen);
-Navigation.registerComponent('dontpad.TextoScreen', () => TextoScreen);
-Navigation.registerComponent('dontpad.FileScreen', () => FileScreen);
-Navigation.registerComponent('dontpad.FolderScreen', () => FolderScreen);
+const store = configureStore();
+
+Navigation.registerComponent('dontpad.HomeScreen', () => HomeScreen, store, Provider);
+Navigation.registerComponent('dontpad.TextoScreen', () => TextoScreen, store, Provider);
+Navigation.registerComponent('dontpad.FileScreen', () => FileScreen, store, Provider);
+Navigation.registerComponent('dontpad.FolderScreen', () => FolderScreen, store, Provider);
 
 startSingleScreenApp();
