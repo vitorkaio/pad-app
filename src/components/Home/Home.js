@@ -14,10 +14,12 @@ class Home extends React.Component {
     this.state = {url: ''};
   }
 
+  // entrada de dados para o state url
   handlerInputUrl = (val) => {
     this.setState({url: val});
   }
 
+  // adiciona dados no redux e inicia as tabs.
   onInsertUrlHandler = () => {
     const url = this.state.url[this.state.url.length - 1] === '/' ? this.state.url : this.state.url + '/';
     this.props.onAddUrl(url);

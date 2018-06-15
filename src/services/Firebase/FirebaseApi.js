@@ -77,6 +77,20 @@ class FirebaseApi {
     // console.log('\n', '**** END getRotaLinks ****', '\n');
   }
 
+  // Posta um texto na url passada.
+  static postRotaTexto(url, texto) {
+    const rota = this.buildUrl(url);
+    console.log('postRotaTexto', texto, rota);
+    return new Promise((resolve, reject) => {
+      const fire = Firebase.database().ref().child(`rotas/${rota}/texto`);
+      fire.set(texto, erro => {
+        if (erro === false)
+          resolve(false);
+      });
+      resolve(true);
+    });
+  }
+
 }// Fim da classe
 
 export default FirebaseApi;

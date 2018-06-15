@@ -10,6 +10,7 @@ const TextArea = (props) => {
       multiline={true}
       placeholder='Vazio...'
       value={props.texto}
+      onChangeText={(text) => props.inputTextArea(text)}
      />
     </View>
   );
