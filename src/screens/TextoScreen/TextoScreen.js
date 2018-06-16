@@ -43,19 +43,37 @@ class TextoScreen extends React.Component {
       .subscribe(this.getObsPostText());
   }
 
+  componentWillUnmount() {
+    console.log('WillUnmount');
+    this.subscriptionGetText.unsubscribe();
+    this.subsObs.unsubscribe();
+  }
+
   // Observable para o firebase.
   listenerObsFirebaseText = () => {
     const obs = {
       next: (val) => {
-        FirebaseApi.getRotaLinks(this.props.dontpad.url).then(res => {
-          val.links = res;
-          console.log(val);
-          this.texto = val.texto;
-          this.props.onAddPad(val);
-        });
+        if(val === null) {
+          FirebaseApi.postRotaTexto(this.props.dontpad.url, 'Digite alguma coisa...').then(res => {
+            if(res === true) {
+              this.setState({atualizaTexto: false});
+            }
+          }).catch(err => {
+            console.log(err);
+            this.setState({atualizaTexto: false});
+          })
+        }
+        else {
+          FirebaseApi.getRotaLinks(this.props.dontpad.url).then(res => {
+            val.links = res;
+            console.log(val);
+            this.texto = val.texto;
+            this.props.onAddPad(val);
+          });
+        }
       },
       error: (err) => {
-        console.log(err);
+        console.log('HERE');
       },
       complete: () => {
 

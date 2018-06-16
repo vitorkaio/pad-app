@@ -19,20 +19,24 @@ class FirebaseApi {
     return new Observable(obs => {
       fireUser.orderByKey().equalTo(rota).on('value', snap => {
         const res = snap.val();
-        let dados = {
-          url: url,
-          texto: '',
-          arqs: null,
-          links: null,
-          senha: ''
-        };
-        // console.log(res[Object.keys(res)[0]]);
-        dados.texto = res[Object.keys(res)[0]].texto;
-        dados.arqs = res[Object.keys(res)[0]].arqs;
-        dados.senha = res[Object.keys(res)[0]].senha;
-        obs.next(dados);
+        if(res === null)
+          obs.next(res);
+        else {
+          let dados = {
+            url: url,
+            texto: '',
+            arqs: null,
+            links: null,
+            senha: ''
+          };
+          // console.log(res[Object.keys(res)[0]]);
+          dados.texto = res[Object.keys(res)[0]].texto;
+          dados.arqs = res[Object.keys(res)[0]].arqs;
+          dados.senha = res[Object.keys(res)[0]].senha;
+          obs.next(dados);
+        }
       }, (errorObject) => {
-        obs.error(null);
+        obs.error('null');
       });
     });
 
